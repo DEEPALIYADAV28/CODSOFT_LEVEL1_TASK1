@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image with Search Bar and Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .top-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-container img {
+            width: 40%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .logos {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+
+        .logos img {
+            width: 100px; /* Increased size of logos */
+            height: auto;
+            margin-right: 15px; /* Adjusted spacing between logos */
+            border-radius: 5px;
+        }
+
+        .search-bar {
+            margin-left: 15px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar input[type="submit"] {
+            padding: 10px 15px;
+            border: 1px solid #007BFF;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+        }
+
+        .search-bar input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #333;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 20px 30px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 20px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .content {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .image-section {
+            flex: 1;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .image-section img {
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);}
+
+        .image-section h2 {
+            margin-top: 10px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .hero {
+            width: 100%;
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #007BFF;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            background-color: white;
+            color: #007BFF;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .hero button:hover {
+            background-color: #f1f1f1;
+        }
+
+        footer {
+            width: 100%;
+            background-color: #333;
+            color: #f2f2f2;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            margin: 20px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h2 {
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #f2f2f2;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .top-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .top-container img {
+                width: 100%;
+                height: auto;
+            }
+
+            .logos {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .logos img {
+                width: 80px;
+                height: auto;
+                margin-right: 10px;
+            }
+
+            .search-bar {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
+            .navbar a {
+                float: none;
+                width: 100%;
+                padding: 16px 24px;
+            }
+
+            .content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .image-section {
+                width: 80%;
+                margin-top: 20px;
+            }
+
+            .image-section img {
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <img src="images/InShot_20240615_165949331.jpg" alt="Description">
+        <div class="logos">
+            <img src="images/Education Logo Open Book Dictionary Textbook Stock Illustration 1570439647 _ Shutterstock.jpeg" alt="Logo 1">
+            <img src="images/41300472.jpg" alt="Logo 2">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <input type="submit" value="Search">
+        </div>
+    </div>
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#register">Register</a>
+        <a href="#donate">Donate</a>
+        <a href="#more">More</a>
+    </div>
+    <div class="hero">
+        <h1>Welcome to Our Website</h1>
+        <p>Your one-stop solution for all your needs.</p>
+        <button onclick="window.location.href='#about'">Learn More</button>
+    </div>
+    <div class="content">
+        <div class="image-section">
+            <img src="images/1718409067906.jpg" alt="Main Image">
+            <h2>Empowering Education</h2>
+        </div>
+        <div class="image-section">
+            <img src="images\1718814968330.JPG" alt="Second Image">
+            <h2>Innovative Learning</h2>
+        </div>
+        <div class="image-section">
+            <img src="images\1718814968337.jpg" alt="Third Image">
+            <h2>Community Engagement</h2>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>About Us</h2>
+                <p>We are dedicated to providing the best services to our community.</p>
+            </div>
+            <div class="footer-section links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li
